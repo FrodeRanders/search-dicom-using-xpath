@@ -25,6 +25,9 @@ Searching for a DICOM tag is currently done via it's name and not
 it's id number. Using the composite (group.element) clashes with 
 the XPath parser, but using the plain number could be an alternative
 
+Using the DICOM Visualizr (a sibling project), this is the tree that
+we are searching in and the lone DicomElement we are searching for:
+[here](./doc/screencapture.png)
 
 ## Tests
 The test program runs against test-data (found among the resources) and tests these things:
