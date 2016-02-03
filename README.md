@@ -11,6 +11,21 @@ to individual sequences in the DICOM file. I also had to map
 individual DICOM tags onto the XML attribute concept, so if this had
 been an XML file then all information would be kept in attributes.
 
+This is a finding tool. Encapsulated within each DicomElement object 
+you'll find the dcm4che3 org.dcm4che3.data.Attributes object that has
+all relevant information. The value representation in the wrapper
+objects are relatively rudimentary and only exists to be able to form
+XPath expressions. 
+
+The idea is to use this tool to find the relevant pieces you are interested
+in and then dive into the org.dcm4che3.data.Attributes object to pull
+the bits an pieces you need.
+
+Searching for a DICOM tag is currently done via it's name and not
+it's id number. Using the composite (group.element) clashes with 
+the XPath parser, but using the plain number could be an alternative
+
+
 ## Tests
 The test program runs against test-data (found among the resources) and tests these things:
 
