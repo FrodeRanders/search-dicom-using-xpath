@@ -14,35 +14,35 @@ been an XML file then all information would be kept in attributes.
 ## Tests
 The test program runs against test-data (found among the resources) and tests these things:
 
-* Using XPath expression: /
+* Using XPath expression: `/`
 ```
 Found DicomElement {DICOMDIR}
 ```
 
-* Using XPath expression: //ConceptNameCodeSequence
+* Using XPath expression: `//ConceptNameCodeSequence`
 ```
 Found DicomElement {(0040,A043) ConceptNameCodeSequence}
 ```
 
-* Using XPath expression: //ConceptNameCodeSequence/@CodeValue
+* Using XPath expression: `//ConceptNameCodeSequence/@CodeValue`
 ```
 Found DicomAttribute {(0008,0100) CodeValue vr=SH value="45_01004001"}
 ```
 
 * Using XPath expression:
-//ConceptNameCodeSequence[@CodeValue='45_01004001']
+`//ConceptNameCodeSequence[@CodeValue='45_01004001']`
 ```
 Found DicomElement {(0040,A043) ConceptNameCodeSequence}
 ```
 
 * Using XPath expression:
-//ConceptNameCodeSequence[@CodeValue='45_01004001']/@CodeValue
+`//ConceptNameCodeSequence[@CodeValue='45_01004001']/@CodeValue`
 ```
 Found DicomAttribute {(0008,0100) CodeValue vr=SH value="45_01004001"}
 ```
 
 * Using XPath expression:
-//ConceptNameCodeSequence[@CodeValue='45_01004001' and @CodingSchemeDesignator='99_PHILIPS']/@CodeValue
+`//ConceptNameCodeSequence[@CodeValue='45_01004001' and @CodingSchemeDesignator='99_PHILIPS']/@CodeValue`
 ```
 Found DicomAttribute {(0008,0100) CodeValue vr=SH value="45_01004001"}
 ```
