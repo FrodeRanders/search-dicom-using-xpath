@@ -86,6 +86,6 @@ public class DicomAttribute {
 
     @Override
     public String toString(){
-        return "DicomAttribute {" + getDescription() + " vr=" + vr.name() + " value=\"" + value + "\"}";
+        return "DicomAttribute {" + id  + " " + vr.name() + " [" + value + "] " + name + "}";
     }
 }
