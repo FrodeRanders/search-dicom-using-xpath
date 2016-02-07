@@ -127,7 +127,7 @@ public class DicomNavigator extends DefaultNavigator {
 
     public Iterator getChildAxisIterator(Object contextNode) throws UnsupportedAxisException {
         if (contextNode instanceof DicomDocument) {
-            return ((DicomDocument)contextNode).getDicomObject().getChildIterator();
+            return ((DicomDocument)contextNode).getRootElement().getChildIterator();
 
         } else if (contextNode instanceof DicomElement) {
             return ((DicomElement)contextNode).getChildIterator();
@@ -270,7 +270,7 @@ public class DicomNavigator extends DefaultNavigator {
 
     public Object getDocumentNode(Object contextNode) {
         if (contextNode instanceof DicomDocument) {
-            return ((DicomDocument)contextNode).getDicomObject();
+            return ((DicomDocument)contextNode).getRootElement();
 
         } else if (contextNode instanceof DicomElement) {
 

@@ -91,8 +91,8 @@ public class DicomdirLoader extends DicomLoader {
         // (0004,1220) DirectoryRecordSequence
         Sequence sequence = dataset.getSequence(TagUtils.toTag(0x0004, 0x1220));
         if (null != sequence) {
-            for (int i = 0; i < sequence.size(); i++) {
-                Attributes record = sequence.get(i);
+            for (Object recordInSequence : sequence) {
+                Attributes record = (Attributes)recordInSequence;
                 String recordType = DicomElement.directoryRecordType(record);
 
                 switch (recordType) {
@@ -124,13 +124,13 @@ public class DicomdirLoader extends DicomLoader {
                         }
 
                         if (referencedFile.exists() && referencedFile.canRead()) {
-                            String info = "Referenced file: " + referencedFile.getPath();
-                            log.debug(info);
+                            String info = "Referencing file: " + referencedFile.getPath();
+                            log.info(info);
 
                             if (loadReferencedFiles) {
                                 try (DicomInputStream dicomInputStream = new DicomInputStream(new FileInputStream(referencedFile))) {
                                     Attributes ds = dicomInputStream.readDataset(-1, -1);
-                                    loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, referencedFile, dicomdirFile.getDicomObject()));
+                                    loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, referencedFile, dicomdirFile.getRootElement()));
                                 }
                             }
                         } else if (loadReferencedFiles) {
@@ -160,13 +160,21 @@ public class DicomdirLoader extends DicomLoader {
                         }
 
                         if (referencedFile.exists() && referencedFile.canRead()) {
-                            String info = "Referenced file: " + referencedFile.getPath();
-                            log.debug(info);
+                            String info = "Referencing file: " + referencedFile.getPath();
+                            log.info(info);
 
                             if (loadReferencedFiles) {
                                 try (DicomInputStream dicomInputStream = new DicomInputStream(new FileInputStream(referencedFile))) {
                                     Attributes ds = dicomInputStream.readDataset(-1, -1);
-                                    loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, referencedFile, dicomdirFile.getDicomObject()));
+                                    DicomElement owner = dicomdirFile.getRootElement();
+
+                                    // Load referenced document
+                                    DicomDocument referencedDoc = DicomLoader.defaultFileLoader.load(ds, referencedFile, owner);
+                                    loadedFiles.add(referencedDoc);
+
+                                    // Add as child of
+                                    owner.getChildren().add(referencedDoc.getRootElement());
+
                                 }
                             }
                         } else if (loadReferencedFiles) {

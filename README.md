@@ -158,7 +158,7 @@ Seaching right breast density using: //ConceptCodeSequence[(../../ConceptNameCod
 
 ```
 
-If we instead were to locate the attribute itself, we would do like this:
+If we instead were to locate the attribute itself, we could do like this:
 ```java
 // code continues from section above...
 String expr2 = expr + "/@CodeValue";
@@ -175,8 +175,7 @@ Output:
 (0008,0100) CodeValue :: F-01713
 ```
 
-
-We have transformed the trouble of navigating the DICOM tree to composing XPath expressions.
+We have transformed the trouble of navigating the DICOM tree to composing XPath expressions!
 
 ## Dependencies
 There are some simple dependencies on the ensure project (https://github.com/FrodeRanders/ensure.git),

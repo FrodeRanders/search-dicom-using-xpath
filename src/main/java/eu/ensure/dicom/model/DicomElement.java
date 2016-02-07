@@ -30,6 +30,7 @@ import java.util.List;
  */
 public class DicomElement {
     private static final Logger log = LogManager.getLogger(DicomElement.class);
+    private static final int NO_TAG = -1;
 
     private final String id;  // Id if object is wrapped in a sequence, "" otherwise
     private final String name;  // Name of sequence if wrapped -- otherwise name of file
@@ -74,7 +75,7 @@ public class DicomElement {
     }
 
     public DicomElement(String name, Attributes attributes, DicomElement owner) {
-        this(0, name, attributes, owner);
+        this(NO_TAG, name, attributes, owner);
     }
 
     public String getId() {
@@ -87,6 +88,10 @@ public class DicomElement {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<DicomElement> getChildren() {
+        return children;
     }
 
     public Iterator<DicomElement> getChildIterator() {
@@ -585,9 +590,9 @@ public class DicomElement {
         return asText(recurse, "");
     }
 
-    private final static String INDENT = "    ";
+    public final static String INDENT = "    ";
 
-    private String asText(boolean recurse, String prefix) {
+    public String asText(boolean recurse, String prefix) {
         String text = prefix + "[";
         if (null == id || id.length() == 0) {
             text += name;

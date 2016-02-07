@@ -252,18 +252,18 @@ public class DicomDocument {
     private Type type = Type.Unknown;
     private final String name;
     private final String path;
-    private final DicomElement rootObject;
+    private final DicomElement rootElement;
 
     public DicomDocument(DicomElement dicomElement, String name, String path) {
-        this.rootObject = dicomElement;
+        this.rootElement = dicomElement;
         this.name = name;
         this.path = path; // may be null
 
         this.type = Type.find(dicomElement.getSopClassUID());
     }
 
-    public DicomElement getDicomObject() {
-        return rootObject;
+    public DicomElement getRootElement() {
+        return rootElement;
     }
 
     public String getName() {
@@ -279,12 +279,11 @@ public class DicomDocument {
     }
 
     public String asText(boolean recurse) {
-        return rootObject.asText(recurse);
+        return rootElement.asText(recurse);
     }
 
     @Override
     public String toString(){
         return "DicomDocument {file=\"" + getName() + "\" type=\"" + getType().getDescription() + "\"}";
     }
-
 }

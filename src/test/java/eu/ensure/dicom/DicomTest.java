@@ -9,7 +9,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 
@@ -56,7 +55,7 @@ public class DicomTest extends TestCase {
             //loader.load(file);
 
             DicomDocument dicomDocument = loader.getDicomDocument();
-            DicomElement dicomElement = dicomDocument.getDicomObject();
+            DicomElement dicomElement = dicomDocument.getRootElement();
 
             // Get root element (DicomElement) -- typically a DICOMDIR
             String expr = "/";
@@ -64,7 +63,7 @@ public class DicomTest extends TestCase {
             XPath xpath = new XPath(expr);
             Object node = xpath.selectSingleNode(dicomElement);
             if (null != node) {
-                System.out.println("Found " + node.toString());
+                System.out.println("Found DicomElement:\n" + ((DicomElement)node).asText(/* recurse? */ false, DicomElement.INDENT));
                 assertTrue(dicomElement.equals(node));
             }
 
@@ -74,7 +73,7 @@ public class DicomTest extends TestCase {
             xpath = new XPath(expr);
             List nodes = xpath.selectNodes(dicomElement);
             for (Object _node : nodes) {
-                System.out.println("Found " + _node.toString());
+                System.out.println("Found DicomElement:\n" + ((DicomElement)_node).asText(/* recurse? */ false, DicomElement.INDENT));
                 assertTrue(((DicomElement)_node).getName().equals("ConceptNameCodeSequence"));
             }
 
@@ -84,7 +83,7 @@ public class DicomTest extends TestCase {
             xpath = new XPath(expr);
             nodes = xpath.selectNodes(dicomElement);
             for (Object _node : nodes) {
-                System.out.println("Found " + _node.toString());
+                System.out.println("Found DicomAttribute:\n" + ((DicomAttribute)_node).asText(DicomElement.INDENT));
                 assertTrue(((DicomAttribute) _node).getName().equals("CodeValue"));
             }
 
@@ -94,7 +93,7 @@ public class DicomTest extends TestCase {
             xpath = new XPath(expr);
             nodes = xpath.selectNodes(dicomElement);
             for (Object _node : nodes) {
-                System.out.println("Found " + _node.toString());
+                System.out.println("Found DicomElement:\n" + ((DicomElement)_node).asText(/* recurse? */ false, DicomElement.INDENT));
                 assertTrue(((DicomElement)_node).getName().equals("ConceptNameCodeSequence"));
             }
 
@@ -104,8 +103,8 @@ public class DicomTest extends TestCase {
             xpath = new XPath(expr);
             nodes = xpath.selectNodes(dicomElement);
             for (Object _node : nodes) {
-                System.out.println("Found " + _node.toString());
-                assertTrue(((DicomAttribute)_node).getName().equals("CodeValue"));
+                System.out.println("Found DicomAttribute:\n" + ((DicomAttribute)_node).asText(DicomElement.INDENT));
+                assertTrue(((DicomAttribute) _node).getName().equals("CodeValue"));
                 assertTrue(((DicomAttribute)_node).getValue().equals("45_01004001"));
             }
 
@@ -118,7 +117,7 @@ public class DicomTest extends TestCase {
             xpath = new XPath(expr);
             nodes = xpath.selectNodes(dicomElement);
             for (Object _node : nodes) {
-                System.out.println("Found " + _node.toString());
+                System.out.println("Found DicomAttribute:\n" + ((DicomAttribute)_node).asText(DicomElement.INDENT));
                 assertTrue(((DicomAttribute)_node).getName().equals("CodeValue"));
                 assertTrue(((DicomAttribute)_node).getValue().equals("45_01004001"));
             }

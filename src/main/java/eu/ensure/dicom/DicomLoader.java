@@ -48,13 +48,13 @@ public class DicomLoader {
     public static final FileLoader defaultFileLoader = (dataset, file, parent) -> {
         String name = file.getName();
         String path = file.getPath();
-        DicomDocument dicomDocument1 = new DicomDocument(new DicomElement(name, dataset, parent), name, path);
-        return dicomDocument1;
+        DicomDocument dicomDocument = new DicomDocument(new DicomElement(name, dataset, parent), name, path);
+        return dicomDocument;
     };
 
     public static final StreamLoader defaultStreamLoader = (dataset, name, parent, inputStream) -> {
-        DicomDocument dicomDocument1 = new DicomDocument(new DicomElement(name, dataset, parent), name, /* no file, so no path */ null);
-        return dicomDocument1;
+        DicomDocument dicomDocument = new DicomDocument(new DicomElement(name, dataset, parent), name, /* no file, so no path */ null);
+        return dicomDocument;
     };
 
     public DicomLoader() {
