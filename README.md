@@ -113,16 +113,32 @@ Consider this tree-structured snippet of a structured report:
 ```
 
 We want to extract the (estimated) overall breast composition using the SNOMED-RT vocabulary.
-This XPath expression would be accurate (and I am really sorry that it does not wrap :)
+This XPath expression would be accurate, matching a great many details from the tree above
+(and I am really sorry that it does not wrap :)
 ```
 //ConceptCodeSequence[(../../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020'])]
 ```
 
-This expression can be simplified -- adding risk for getting matches in other part of the tree.
-In fact the following expression would suffice:
+This expression can be simplified, but the more you remove from the expression, the
+higher the risk of getting matches in other parts of the tree. I think, the following
+expression would suffice:
 ```
 //ConceptCodeSequence[(../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020'])]
 ```
+
+Going into some detail:
+1. The term ```//ConceptCodeSequence``` matches any DicomElement (in project lingo), 
+2. so we add a predicate using the ```[ predicate ]```, which consists of two demands
+3. ```../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']``` must match sibling element
+  1. having two matching attributes
+    - ```@CodingSchemeDesignator='SRT'``` and 
+    - ```@CodeValue='F-01710'```
+4. ```../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020']`` must match sibling element
+  1. having to matching attributes
+    - ```@CodingSchemeDesignator='SNM3'``` and
+    - ```@CodeValue='T-04020'```
+    
+For more details on how to form XPath expressions, I kindly refer you to [Google](http://lmgtfy.com/?q=XPath+expressions).
 
 ## Java code
 Locate the DicomElement containing the breast composition (SRT:F-01713) attribute (and not the attribute itself).
