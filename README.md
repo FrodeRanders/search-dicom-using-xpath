@@ -113,7 +113,7 @@ Consider this tree-structured snippet of a structured report:
 ```
 
 We want to extract the (estimated) overall breast composition using the SNOMED-RT vocabulary.
-This XPath expression would be accurate 
+This XPath expression would be accurate (and I am really sorry that it does not wrap :)
 ```
 //ConceptCodeSequence[(../../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020'])]
 ```
@@ -126,7 +126,7 @@ In fact the following expression would suffice:
 
 ## Java code
 Locate the DicomElement containing the breast composition (SRT:F-01713) attribute (and not the attribute itself).
-```
+```java
 DicomLoader loader = new DicomLoader();
 
 File sr = new File("/path/to/SR00003.DCM");
@@ -159,7 +159,7 @@ Seaching right breast density using: //ConceptCodeSequence[(../../ConceptNameCod
 ```
 
 If we instead were to locate the attribute itself, we would do like this:
-```
+```java
 // code continues from section above...
 String expr2 = expr + "/@CodeValue";
 xpath = new XPath(expr2);
