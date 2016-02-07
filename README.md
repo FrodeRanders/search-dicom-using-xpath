@@ -127,16 +127,17 @@ expression would suffice:
 ```
 
 Going into some detail:
-1. The term ```//ConceptCodeSequence``` matches any DicomElement (in project lingo), 
-2. so we add a predicate using the ```[ predicate ]```, which consists of two demands
-3. ```../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']``` must match sibling element
+
+1. The term `//ConceptCodeSequence` matches any DicomElement (in project lingo), 
+2. so we add a predicate using the `[ predicate ]`, which consists of two demands
+3. `../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']` must match sibling element
   1. having two matching attributes
-    - ```@CodingSchemeDesignator='SRT'``` and 
-    - ```@CodeValue='F-01710'```
-4. ```../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020']`` must match sibling element
+    - `@CodingSchemeDesignator='SRT'` and 
+    - `@CodeValue='F-01710'`
+4. `../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020']` must match sibling element
   1. having to matching attributes
-    - ```@CodingSchemeDesignator='SNM3'``` and
-    - ```@CodeValue='T-04020'```
+    - `@CodingSchemeDesignator='SNM3'` and
+    - `@CodeValue='T-04020'`
     
 For more details on how to form XPath expressions, I kindly refer you to [Google](http://lmgtfy.com/?q=XPath+expressions).
 
