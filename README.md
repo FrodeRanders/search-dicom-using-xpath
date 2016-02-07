@@ -128,7 +128,7 @@ expression would suffice:
 
 Going into some detail:
 
-1. The term `//ConceptCodeSequence` matches any DicomElement (in project lingo), 
+1. The term `//ConceptCodeSequence` matches any DicomElement (in project lingo) named "ConceptCodeSequence", 
 2. so we add a predicate using the `[ predicate ]`, which consists of two demands
 3. `../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']` must match sibling element
   1. having two matching attributes
