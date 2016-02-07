@@ -32,7 +32,7 @@ public class XPath extends BaseXPath {
         super(xpathExpr, navigator);
     }
 
-    public XPath(DicomElement dicomElement, String xpathExpr) throws JaxenException {
+    private XPath(DicomElement dicomElement, String xpathExpr) throws JaxenException {
         this(xpathExpr);
     }
 }

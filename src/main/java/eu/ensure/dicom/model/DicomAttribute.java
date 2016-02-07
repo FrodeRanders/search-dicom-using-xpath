@@ -72,6 +72,10 @@ public class DicomAttribute {
         return owner;
     }
 
+    public String asText() {
+        return asText("");
+    }
+
     public String asText(String prefix) {
         String text = prefix;
         text += id;

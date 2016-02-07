@@ -569,7 +569,7 @@ public class DicomElement {
                     info += t.getClass().getName();
                     log.warn(info);
                 }
-                elementList.add(new DicomAttribute(tag, vr, value, /* owner */ currentObject));
+                elementList.add(new DicomAttribute(tag, vr, value.trim(), /* owner */ currentObject));
 
                 return true;
             }, /* visit nested? */ false);
