@@ -37,28 +37,24 @@ public class DicomLoader {
     protected DicomDocument dicomDocument = null;
 
     public interface FileLoader {
-        DicomDocument load(final Attributes dataset, final DicomElement parent, final File file) throws IOException, InconsistencyException;
+        DicomDocument load(final Attributes dataset, final File file, final DicomElement parent) throws IOException, InconsistencyException;
     }
 
     public interface StreamLoader {
-        DicomDocument load(final Attributes dataset, final DicomElement parent, final String name, final InputStream inputStream) throws IOException, InconsistencyException;
+        DicomDocument load(final Attributes dataset, final String name, final DicomElement parent, final InputStream inputStream) throws IOException, InconsistencyException;
     }
 
 
-    public static final FileLoader defaultFileLoader = new FileLoader() {
-        public DicomDocument load(final Attributes dataset, final DicomElement parent, final File file) throws IOException, InconsistencyException {
-            String name = file.getName();
-            String path = file.getPath();
-            DicomDocument dicomDocument = new DicomDocument(new DicomElement(name, dataset, parent), name, path);
-            return dicomDocument;
-        }
+    public static final FileLoader defaultFileLoader = (dataset, file, parent) -> {
+        String name = file.getName();
+        String path = file.getPath();
+        DicomDocument dicomDocument1 = new DicomDocument(new DicomElement(name, dataset, parent), name, path);
+        return dicomDocument1;
     };
 
-    public static final StreamLoader defaultStreamLoader = new StreamLoader() {
-        public DicomDocument load(final Attributes dataset, final DicomElement parent, final String name, final InputStream inputStream) throws IOException, InconsistencyException {
-            DicomDocument dicomDocument = new DicomDocument(new DicomElement(name, dataset, parent), name, /* no file, so no path */ null);
-            return dicomDocument;
-        }
+    public static final StreamLoader defaultStreamLoader = (dataset, name, parent, inputStream) -> {
+        DicomDocument dicomDocument1 = new DicomDocument(new DicomElement(name, dataset, parent), name, /* no file, so no path */ null);
+        return dicomDocument1;
     };
 
     public DicomLoader() {
@@ -73,7 +69,7 @@ public class DicomLoader {
     protected void load(final FileLoader loader, final File file, final DicomElement parent) throws IOException, InconsistencyException {
         try (DicomInputStream dicomInputStream = new DicomInputStream(new FileInputStream(file))) {
             Attributes ds = dicomInputStream.readDataset(-1, -1);
-            dicomDocument = loader.load(ds, parent, file);
+            dicomDocument = loader.load(ds, file, parent);
         }
     }
 
@@ -86,10 +82,13 @@ public class DicomLoader {
     protected void load(final StreamLoader loader, final String name, final InputStream inputStream, final DicomElement parent) throws IOException, InconsistencyException {
         try (DicomInputStream dicomInputStream = new DicomInputStream(inputStream)) {
             Attributes ds = dicomInputStream.readDataset(-1, -1);
-            dicomDocument = loader.load(ds, parent, name, /* no file, so no path */ null);
+            dicomDocument = loader.load(ds, name, parent, /* no file, so no path */ null);
         }
     }
 
+    public void load(final File file) throws IOException, InconsistencyException {
+        load(defaultFileLoader, file, /* no parent */ null);
+    }
 
     public void load(final FileLoader loader, final File file) throws IOException, InconsistencyException {
         load(loader, /* no parent */ null);

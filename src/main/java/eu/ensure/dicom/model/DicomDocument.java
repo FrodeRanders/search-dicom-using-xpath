@@ -278,6 +278,10 @@ public class DicomDocument {
         return type;
     }
 
+    public String asText(boolean recurse) {
+        return rootObject.asText(recurse);
+    }
+
     @Override
     public String toString(){
         return "DicomDocument {file=\"" + getName() + "\" type=\"" + getType().getDescription() + "\"}";

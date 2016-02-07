@@ -72,6 +72,15 @@ public class DicomAttribute {
         return owner;
     }
 
+    public String asText(String prefix) {
+        String text = prefix;
+        text += id;
+        text += " " + description + " :: ";
+        text += value;
+        text += "\n";
+        return text;
+    }
+
     @Override
     public String toString(){
         return "DicomAttribute {" + getDescription() + " vr=" + vr.name() + " value=\"" + value + "\"}";

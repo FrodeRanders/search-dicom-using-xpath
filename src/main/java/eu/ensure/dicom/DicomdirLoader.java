@@ -68,24 +68,18 @@ public class DicomdirLoader extends DicomLoader {
         }
     }
 
-    public final FileLoader dicomdirFileLoader = new FileLoader() {
-        public DicomDocument load(final Attributes dataset, final DicomElement parent, final File file) throws IOException, InconsistencyException {
-
-            DicomElement topObject = new DicomElement(file.getName(), dataset, parent);
-            DicomDocument dicomdirFile = new DicomDocument(topObject, file.getName(), file.getPath());
-            loadContent(dicomdirFile, dataset, file.getParentFile().getPath());
-            return dicomdirFile;
-        }
+    public final FileLoader dicomdirFileLoader = (dataset, file, parent) -> {
+        DicomElement topObject = new DicomElement(file.getName(), dataset, parent);
+        DicomDocument dicomdirFile = new DicomDocument(topObject, file.getName(), file.getPath());
+        loadContent(dicomdirFile, dataset, file.getParentFile().getPath());
+        return dicomdirFile;
     };
 
-    public final StreamLoader dicomdirStreamLoader = new StreamLoader() {
-        public DicomDocument load(final Attributes dataset, final DicomElement parent, final String name, final InputStream inputStream) throws IOException, InconsistencyException {
-
-            DicomElement topObject = new DicomElement(name, dataset, parent);
-            DicomDocument dicomdirFile = new DicomDocument(topObject, name, /* no file, so no path */ null);
-            loadContent(dicomdirFile, dataset, /* no path */ null);
-            return dicomdirFile;
-        }
+    public final StreamLoader dicomdirStreamLoader = (dataset, name, parent, inputStream) -> {
+        DicomElement topObject = new DicomElement(name, dataset, parent);
+        DicomDocument dicomdirFile = new DicomDocument(topObject, name, /* no file, so no path */ null);
+        loadContent(dicomdirFile, dataset, /* no path */ null);
+        return dicomdirFile;
     };
 
 
@@ -136,7 +130,7 @@ public class DicomdirLoader extends DicomLoader {
                             if (loadReferencedFiles) {
                                 try (DicomInputStream dicomInputStream = new DicomInputStream(new FileInputStream(referencedFile))) {
                                     Attributes ds = dicomInputStream.readDataset(-1, -1);
-                                    loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, dicomdirFile.getDicomObject(), referencedFile));
+                                    loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, referencedFile, dicomdirFile.getDicomObject()));
                                 }
                             }
                         } else {
@@ -172,7 +166,7 @@ public class DicomdirLoader extends DicomLoader {
                             if (loadReferencedFiles) {
                                 try (DicomInputStream dicomInputStream = new DicomInputStream(new FileInputStream(referencedFile))) {
                                     Attributes ds = dicomInputStream.readDataset(-1, -1);
-                                    loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, dicomdirFile.getDicomObject(), referencedFile));
+                                    loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, referencedFile, dicomdirFile.getDicomObject()));
                                 }
                             }
                         } else {
