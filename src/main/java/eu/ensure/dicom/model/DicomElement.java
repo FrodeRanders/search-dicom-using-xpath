@@ -94,6 +94,10 @@ public class DicomElement {
         return children;
     }
 
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
     public Iterator<DicomElement> getChildIterator() {
         return children.iterator();
     }

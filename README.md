@@ -142,6 +142,11 @@ List nodes = xpath.selectNodes(rootElement);
 for (Object node : nodes) {
    // We are matching on a DicomElement and not an individual attribute, so
    System.out.println(((DicomElement)node).asText(/* recurse? */ false);
+   
+   // From here, we can switch to the dcm4che realm completely
+   Attributes attributes = ((DicomElement)node).getAttributes();
+   System.out.println("Corresponding raw dcm4che3 Attributes:");
+   System.out.println(attributes);
 }
 ```
 
@@ -155,6 +160,11 @@ Seaching right breast density using: //ConceptCodeSequence[(../../ConceptNameCod
     (0008,0103) CodingSchemeVersion :: 1.0
     (0008,0104) CodeMeaning :: ACR3
 
+Corresponding raw dcm4che3 Attributes:
+(0008,0100) SH [F-01713] CodeValue
+(0008,0102) SH [SRT] CodingSchemeDesignator
+(0008,0103) SH [1.0] CodingSchemeVersion
+(0008,0104) LO [ACR3] CodeMeaning
 
 ```
 
