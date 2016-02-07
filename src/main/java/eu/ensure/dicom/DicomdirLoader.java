@@ -133,7 +133,7 @@ public class DicomdirLoader extends DicomLoader {
                                     loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, referencedFile, dicomdirFile.getDicomObject()));
                                 }
                             }
-                        } else {
+                        } else if (loadReferencedFiles) {
                             String info = "Referenced file does not exist: " + referencedFile.getPath();
                             log.warn(info);
                         }
@@ -169,7 +169,7 @@ public class DicomdirLoader extends DicomLoader {
                                     loadedFiles.add(DicomLoader.defaultFileLoader.load(ds, referencedFile, dicomdirFile.getDicomObject()));
                                 }
                             }
-                        } else {
+                        } else if (loadReferencedFiles) {
                             String info = "Referenced file does not exist: " + referencedFile.getPath();
                             log.warn(info);
                         }
