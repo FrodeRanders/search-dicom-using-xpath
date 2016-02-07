@@ -150,10 +150,10 @@ Output:
 Seaching right breast density using: //ConceptCodeSequence[(../../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020'])]
  -> [(DefaultXPath): [(DefaultAbsoluteLocationPath): [(DefaultAllNodeStep): descendant-or-self]/[(DefaultNameStep): ConceptCodeSequence]]]
 [(0040,A168) ConceptCodeSequence]
-    (0008,0100) (0008,0100) CodeValue :: F-01713
-    (0008,0102) (0008,0102) CodingSchemeDesignator :: SRT
-    (0008,0103) (0008,0103) CodingSchemeVersion :: 1.0
-    (0008,0104) (0008,0104) CodeMeaning :: ACR3
+    (0008,0100) CodeValue :: F-01713
+    (0008,0102) CodingSchemeDesignator :: SRT
+    (0008,0103) CodingSchemeVersion :: 1.0
+    (0008,0104) CodeMeaning :: ACR3
 
 
 ```
@@ -172,7 +172,7 @@ for (Object node : nodes) {
 
 Output:
 ```
-(0008,0100) (0008,0100) CodeValue :: F-01713
+(0008,0100) CodeValue :: F-01713
 ```
 
 

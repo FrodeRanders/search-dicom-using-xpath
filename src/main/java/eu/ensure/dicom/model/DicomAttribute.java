@@ -78,8 +78,7 @@ public class DicomAttribute {
 
     public String asText(String prefix) {
         String text = prefix;
-        text += id;
-        text += " " + description + " :: ";
+        text += description + " :: ";
         text += value;
         text += "\n";
         return text;
