@@ -11,7 +11,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <ensure.commons.version>1.3</ensure.commons.version>
+        <ensure.commons.version>1.0-SNAPSHOT</ensure.commons.version>
     </properties>
 
     <repositories>
@@ -24,7 +24,7 @@
     <dependencies>
         <dependency>
             <groupId>eu.ensure</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>vopn</artifactId>
             <version>${ensure.commons.version}</version>
         </dependency>
 

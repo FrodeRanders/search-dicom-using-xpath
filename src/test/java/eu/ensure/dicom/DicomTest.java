@@ -1,9 +1,9 @@
 package eu.ensure.dicom;
 
-import eu.ensure.commons.lang.LoggingUtils;
 import eu.ensure.dicom.model.DicomAttribute;
 import eu.ensure.dicom.model.DicomDocument;
 import eu.ensure.dicom.model.DicomElement;
+import static eu.ensure.vopn.lang.LoggingUtils.setupLoggingFor;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -16,7 +16,7 @@ import java.util.List;
  *
  */
 public class DicomTest extends TestCase {
-    private static Logger log = LoggingUtils.setupLoggingFor(DicomTest.class, "log4j2.xml");
+    private static Logger log = setupLoggingFor(DicomTest.class, "log4j2.xml");
 
     /**
      * Create the test case
