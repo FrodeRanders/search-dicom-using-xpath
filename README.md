@@ -154,7 +154,7 @@ DicomElement rootElement = doc.getDicomObject();
 
 String expr = "//ConceptCodeSequence[(../../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020'])]";
 XPath xpath = new XPath(expr);
-System.out.println("Seaching right breast density using: " + xpath.toString() + "\n -> " + xpath.debug());
+System.out.println("Seairching right breast density using: " + xpath.toString() + "\n -> " + xpath.debug());
 List nodes = xpath.selectNodes(rootElement);
 for (Object node : nodes) {
    // We are matching on a DicomElement and not an individual attribute, so
@@ -169,7 +169,7 @@ for (Object node : nodes) {
 
 Output:
 ```
-Seaching right breast density using: //ConceptCodeSequence[(../../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020'])]
+Searching right breast density using: //ConceptCodeSequence[(../../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ConceptNameCodeSequence[@CodingSchemeDesignator='SRT' and @CodeValue='F-01710']) and (../ContentSequence/ConceptCodeSequence[@CodingSchemeDesignator='SNM3' and @CodeValue='T-04020'])]
  -> [(DefaultXPath): [(DefaultAbsoluteLocationPath): [(DefaultAllNodeStep): descendant-or-self]/[(DefaultNameStep): ConceptCodeSequence]]]
 [(0040,A168) ConceptCodeSequence]
     (0008,0100) CodeValue :: F-01713
@@ -205,7 +205,7 @@ Output:
 We have transformed the trouble of navigating the DICOM tree to composing XPath expressions!
 
 ## Dependencies
-There are some simple dependencies on the ensure project (https://github.com/FrodeRanders/ensure.git),
+There are some simple dependencies on the ensure project (https://github.com/FrodeRanders/java-vopn.git),
 mainly for setting up logging and such.
 
 
