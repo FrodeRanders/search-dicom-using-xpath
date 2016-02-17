@@ -80,6 +80,10 @@ public class DicomElement {
         this(NO_TAG, name, attributes, owner);
     }
 
+    public DicomElement(String name, Attributes attributes) {
+        this(NO_TAG, name, attributes, null);
+    }
+
     public String getId() {
         return id;
     }
