@@ -35,7 +35,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.22</version>
         </dependency>
 
         <dependency>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>org.dcm4che</groupId>
             <artifactId>dcm4che-core</artifactId>
-            <version>3.3.7</version>
+            <version>3.3.8</version>
             <exclusions>
                 <exclusion>
                     <groupId>log4j</groupId>
