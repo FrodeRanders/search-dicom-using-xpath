@@ -11,7 +11,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <ensure.commons.version>1.0-SNAPSHOT</ensure.commons.version>
+        <ensure.vopn.version>1.2</ensure.vopn.version>
     </properties>
 
     <prerequisites>
@@ -29,25 +29,25 @@
         <dependency>
             <groupId>eu.ensure</groupId>
             <artifactId>vopn</artifactId>
-            <version>${ensure.commons.version}</version>
+            <version>${ensure.vopn.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.22</version>
+            <version>1.7.25</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.7</version>
+            <version>2.8.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.7</version>
+            <version>2.8.1</version>
         </dependency>
 
         <dependency>
