@@ -4,7 +4,7 @@
 
     <groupId>eu.ensure</groupId>
     <artifactId>dicom-xpath</artifactId>
-    <version>1.1111111ion>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>XPath framework for DICOM</name>
