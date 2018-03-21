@@ -7,8 +7,34 @@
     <version>1.4</version>
     <packaging>jar</packaging>
 
-    <name>XPath framework for DICOM</name>
-    <url>http://maven.apache.org</url>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>XPath framework for DICOM</description>
+    <url>http://github.com/FrodeRanders/search-dicom-using-xpath</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Frode Randers</name>
+            <email>frode.randers@gmail.com</email>
+            <organizationUrl>https://github.com/FrodeRanders</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/FrodeRanders/search-dicom-using-xpath.git</connection>
+        <developerConnection>scm:git:ssh://github.com:FrodeRanders/search-dicom-using-xpath.git</developerConnection>
+        <url>http://github.com/FrodeRanders/search-dicom-using-xpath/tree/master</url>
+    </scm>
 
     <properties>
         <vopn.version>2.2</vopn.version>
