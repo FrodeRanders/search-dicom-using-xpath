@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Frode Randers
+ * Copyright (C) 2016-2018 Frode Randers
  * All rights reserved
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.ensure.dicom.model;
+package org.gautelis.dicom.model;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
