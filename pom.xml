@@ -4,14 +4,14 @@
 
     <groupId>eu.ensure</groupId>
     <artifactId>dicom-xpath</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <name>XPath framework for DICOM</name>
     <url>http://maven.apache.org</url>
 
     <properties>
-        <ensure.vopn.version>1.7</ensure.vopn.version>
+        <vopn.version>2.2</vopn.version>
         <log4j.version>2.10.0</log4j.version>
         <slf4j.version>1.7.25</slf4j.version>
     </properties>
@@ -29,9 +29,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>eu.ensure</groupId>
+            <groupId>org.gautelis</groupId>
             <artifactId>vopn</artifactId>
-            <version>${ensure.vopn.version}</version>
+            <version>${vopn.version}</version>
         </dependency>
 
         <dependency>

@@ -16,7 +16,7 @@
  */
 package eu.ensure.dicom.model;
 
-import static eu.ensure.vopn.lang.Number.asHumanApproximate;
+import static org.gautelis.vopn.lang.Number.asHumanApproximate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

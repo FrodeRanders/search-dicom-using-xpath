@@ -3,10 +3,10 @@ package eu.ensure.dicom;
 import eu.ensure.dicom.model.DicomAttribute;
 import eu.ensure.dicom.model.DicomDocument;
 import eu.ensure.dicom.model.DicomElement;
-import static eu.ensure.vopn.lang.LoggingUtils.setupLoggingFor;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.InputStream;
@@ -16,7 +16,7 @@ import java.util.List;
  *
  */
 public class DicomTest extends TestCase {
-    private static Logger log = setupLoggingFor(DicomTest.class, "log4j2.xml");
+    private static Logger log = LogManager.getLogger(DicomTest.class);
 
     /**
      * Create the test case
