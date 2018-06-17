@@ -1,6 +1,16 @@
 ## Search DICOM files using XPath expressions
 This project wraps functionality for searching DICOM files using XPath expressions. 
 
+Available from Maven Central as:
+```
+<dependency>
+    <groupId>org.gautelis</groupId>
+    <artifactId>dicom-xpath</artifactId>
+    <version>1.4</version>
+</dependency>
+
+```
+
 The expressions are XPath alright (using the Jaxen parser and
 machinery), but in order to adapt to the DICOM concepts, I had to
 implement an XML-ish model onto DICOM. 
