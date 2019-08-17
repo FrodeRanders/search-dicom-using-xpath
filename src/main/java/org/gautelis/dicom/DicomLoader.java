@@ -63,8 +63,11 @@ public class DicomLoader {
     /**
      * Load a DICOM file from file on disk.
      *
-     * @param loader
+     * @param loader the loader that will be used to load the file
+     * @param file the file itself
+     * @param parent the parent "element" into which the object on file is loaded, if applicable
      * @throws IOException In case of IO error.
+     * @throws InconsistencyException In case of inconsistencies.
      */
     protected void load(final FileLoader loader, final File file, final DicomElement parent) throws IOException, InconsistencyException {
         try (DicomInputStream dicomInputStream = new DicomInputStream(new FileInputStream(file))) {
@@ -76,8 +79,12 @@ public class DicomLoader {
     /**
      * Load a DICOM file from a stream
      *
-     * @param loader
+     * @param loader the loader that will be used to load the stream
+     * @param name the name of the stream
+     * @param inputStream the stream itself
+     * @param parent the parent "element" into which the object in stream is loaded, if applicable
      * @throws IOException In case of IO error.
+     * @throws InconsistencyException In case of inconsistencies.
      */
     protected void load(final StreamLoader loader, final String name, final InputStream inputStream, final DicomElement parent) throws IOException, InconsistencyException {
         try (DicomInputStream dicomInputStream = new DicomInputStream(inputStream)) {
@@ -86,14 +93,38 @@ public class DicomLoader {
         }
     }
 
+    /**
+     * Load a DICOM file from file on disk.
+     *
+     * @param file the file itself
+     * @throws IOException In case of IO error.
+     * @throws InconsistencyException In case of inconsistencies.
+     */
     public void load(final File file) throws IOException, InconsistencyException {
         load(defaultFileLoader, file, /* no parent */ null);
     }
 
+    /**
+     * Load a DICOM file from file on disk.
+     *
+     * @param loader the loader that will be used to load the file
+     * @param file the file itself
+     * @throws IOException In case of IO error.
+     * @throws InconsistencyException In case of inconsistencies.
+     */
     public void load(final FileLoader loader, final File file) throws IOException, InconsistencyException {
         load(loader, /* no parent */ null);
     }
 
+    /**
+     * Load a DICOM file from a stream
+     *
+     * @param loader the loader that will be used to load the stream
+     * @param name the name of the stream
+     * @param inputStream the stream itself
+     * @throws IOException In case of IO error.
+     * @throws InconsistencyException In case of inconsistencies.
+     */
     public void load(final StreamLoader loader, final String name, final InputStream inputStream) throws IOException, InconsistencyException {
         load(loader, name, inputStream, /* no parent */ null);
     }
@@ -102,7 +133,6 @@ public class DicomLoader {
     public DicomDocument getDicomDocument() {
         return dicomDocument;
     }
-
 }
 
 
