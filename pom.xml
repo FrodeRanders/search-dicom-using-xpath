@@ -38,7 +38,7 @@
 
   <repositories>
     <repository>
-      <id>scijava.org</id>
+      <id>dcm4che.public</id>
       <url>https://www.dcm4che.org/maven2</url>
     </repository>
   </repositories>
