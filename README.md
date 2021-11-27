@@ -1,3 +1,5 @@
+## Development is moved to https://github.com/FrodeRanders/dicom-tools
+
 ## Search DICOM files using XPath expressions
 This project wraps functionality for searching DICOM files using XPath expressions. 
 
