@@ -45,7 +45,7 @@
   
   <properties>
     <vopn.version>2.3</vopn.version>
-    <log4j.version>2.17.0</log4j.version>
+    <log4j.version>2.17.1</log4j.version>
     <slf4j.version>1.7.25</slf4j.version>
     <dcm4che.version>5.25.0</dcm4che.version>
   </properties>
